@@ -136,6 +136,25 @@ def table_html(rows: dict) -> str:
     return f'<table class="ops-table">{cells}</table>'
 
 
+# Portfolio banner: always visible, cannot be closed, opens the portfolio in a new tab
+PORTFOLIO_BANNER = """
+<style>
+.project-popup { display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; margin: 4px auto 14px;
+  padding: 8px 10px 8px 14px; background: #fff; color: #18212b; font-size: 14px; line-height: 1.4;
+  border: 1px solid #dde3ea; border-left: 4px solid #0a5555; border-radius: 12px; box-shadow: 0 10px 28px rgba(0, 0, 0, .10); }
+.project-popup-badge { display: grid; place-items: center; flex: none; width: 26px; height: 26px; border-radius: 50%;
+  background: #0a5555; color: #fff; font-size: 13px; }
+.project-popup a { flex: none; padding: 7px 12px; background: #073f3f; color: #fff !important; font-weight: 700;
+  text-decoration: none !important; border-radius: 8px; white-space: nowrap; }
+.project-popup a:hover { background: #0a5555; }
+@media (max-width: 640px) { .project-popup { flex-wrap: wrap; } }
+</style>
+<aside class="project-popup" aria-label="Portfolio project">
+  <span class="project-popup-badge" aria-hidden="true">★</span>
+  <span>This app was developed by Amrina as part of a portfolio.</span>
+  <a href="https://sayamrina.github.io/" target="_blank" rel="noopener">View the portfolio →</a>
+</aside>
+"""
 open_reviews = sum(i["status"] == "open" for i in state.queue)
 mode = "gpt-4o-mini" if settings.llm_provider == "openai" else "offline rules (no API key)"
 st.markdown(f"""
@@ -150,6 +169,7 @@ st.markdown(f"""
 <span>🧑‍⚖️ Sensitive cases go to a human</span><span>⚙️ Model: {esc(mode)}</span>
 <span>Model calls left: <b>{MAX_ACTIONS - state.actions}</b></span></div>
 """, unsafe_allow_html=True)
+st.markdown(PORTFOLIO_BANNER, unsafe_allow_html=True)
 
 tab_ask, tab_docs, tab_triage, tab_review = st.tabs(
     ["Ask the handbook", "Document intake", "Ticket triage", f"Review queue ({open_reviews})"])
