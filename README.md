@@ -118,4 +118,4 @@ Tests run offline with a deterministic fake model (no API key needed): `ruff che
 
 ## Notes
 
-Cutora Health and all documents, people and numbers in this repository are fictional. AI tools were used to support the coding process.
+Cutora Health and all documents, people and numbers in this repository are fictional. This app was built by Amrina, with AI as a supporting tool for coding.
