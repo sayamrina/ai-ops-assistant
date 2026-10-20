@@ -177,7 +177,10 @@ with tab_review:
         with st.container(border=True):
             st.markdown(f"**#{item['id']} {item['kind']}: {item['reference']}**")
             st.warning(item["reason"])
-            st.json(item["result"].get("fields") or {k: item["result"][k] for k in ("category", "priority", "team")})
+            if item["kind"] == "document":
+                st.json({"doc_type": item["result"]["doc_type"], **item["result"]["fields"]})
+            else:
+                st.json({k: item["result"][k] for k in ("category", "team", "priority", "reply_draft")})
             a, r, _ = st.columns([1, 1, 6])
             if a.button("Approve", key=f"a{item['id']}"):
                 item["status"] = "approved"
