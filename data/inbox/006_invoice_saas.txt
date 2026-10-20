@@ -1,0 +1,5 @@
+Receipt / Invoice
+TicketFlow Inc. · 500 Market St, San Francisco
+Invoice INV-55821 · Issued October 3, 2026 · Due on receipt
+Team plan, 25 seats, monthly            USD 625.00
+Total due                               USD 625.00

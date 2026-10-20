@@ -1,0 +1,14 @@
+INVOICE
+NimbusHost GmbH · Hafenstraße 3 · 20457 Hamburg
+Invoice number: NH-2026-10-0482
+Invoice date: 2026-10-01
+Due date: 2026-10-31
+Customer: Cutora Health GmbH
+
+Managed Kubernetes cluster (October 2026)      1,850.00 EUR
+Object storage 4 TB                               212.40 EUR
+Net                                             2,062.40 EUR
+VAT 19 %                                          391.86 EUR
+Total                                           2,454.26 EUR
+
+IBAN DE44 5001 0517 5407 3249 31

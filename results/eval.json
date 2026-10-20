@@ -1,0 +1,667 @@
+{
+ "provider": "openai",
+ "chat_model": "gpt-4o-mini",
+ "embedding_model": "text-embedding-3-small",
+ "knowledge": {
+  "questions": 20,
+  "retrieval_hit_at_1": 0.9444444444444444,
+  "retrieval_hit_at_3": 1.0,
+  "answered_with_correct_source": 1.0,
+  "correct_refusals": 1.0,
+  "seconds_per_question": 1.4,
+  "rows": [
+   {
+    "q": "I lost my phone, how do I get access to my accounts again?",
+    "expected": [
+     "it-access-and-mfa.md"
+    ],
+    "top1": "it-access-and-mfa.md",
+    "top3": [
+     "it-access-and-mfa.md",
+     "it-access-and-mfa.md",
+     "it-access-and-mfa.md"
+    ],
+    "found": true,
+    "cited": [
+     "it-access-and-mfa.md"
+    ],
+    "answer": "If you lose your phone, open an ITOPS ticket with priority 'High' and the type 'MFA reset'. IT will verify your identity by video call before resetting MFA. Never share MFA codes with anyone, including IT staff."
+   },
+   {
+    "q": "Can I get MFA codes by SMS?",
+    "expected": [
+     "it-access-and-mfa.md"
+    ],
+    "top1": "it-access-and-mfa.md",
+    "top3": [
+     "it-access-and-mfa.md",
+     "it-access-and-mfa.md",
+     "it-access-and-mfa.md"
+    ],
+    "found": true,
+    "cited": [
+     "it-access-and-mfa.md"
+    ],
+    "answer": "No, SMS codes are not allowed because they can be intercepted."
+   },
+   {
+    "q": "How long must a password be?",
+    "expected": [
+     "password-and-device-policy.md"
+    ],
+    "top1": "password-and-device-policy.md",
+    "top3": [
+     "password-and-device-policy.md",
+     "password-and-device-policy.md",
+     "password-and-device-policy.md"
+    ],
+    "found": true,
+    "cited": [
+     "password-and-device-policy.md"
+    ],
+    "answer": "Passwords must have at least 14 characters."
+   },
+   {
+    "q": "My laptop was stolen. What do I have to do?",
+    "expected": [
+     "password-and-device-policy.md"
+    ],
+    "top1": "password-and-device-policy.md",
+    "top3": [
+     "password-and-device-policy.md",
+     "password-and-device-policy.md",
+     "it-access-and-mfa.md"
+    ],
+    "found": true,
+    "cited": [
+     "password-and-device-policy.md"
+    ],
+    "answer": "Report a lost or stolen laptop within 1 hour through an ITOPS ticket with priority 'Critical' and inform the security team in the Teams channel #security."
+   },
+   {
+    "q": "May I paste a patient's message into an AI tool?",
+    "expected": [
+     "patient-data-protection.md",
+     "using-ai-tools.md"
+    ],
+    "top1": "using-ai-tools.md",
+    "top3": [
+     "using-ai-tools.md",
+     "patient-data-protection.md",
+     "patient-data-protection.md"
+    ],
+    "found": true,
+    "cited": [
+     "patient-data-protection.md",
+     "using-ai-tools.md"
+    ],
+    "answer": "No, you should not paste patient data into an AI tool unless the tool pseudonymises it automatically."
+   },
+   {
+    "q": "What is the deadline to answer a request for deletion of data?",
+    "expected": [
+     "patient-data-protection.md"
+    ],
+    "top1": "patient-data-protection.md",
+    "top3": [
+     "patient-data-protection.md",
+     "patient-data-protection.md",
+     "patient-data-protection.md"
+    ],
+    "found": true,
+    "cited": [
+     "patient-data-protection.md"
+    ],
+    "answer": "The legal deadline to answer a request for deletion of data is one month from receipt."
+   },
+   {
+    "q": "How fast must a suspected data breach be reported?",
+    "expected": [
+     "patient-data-protection.md"
+    ],
+    "top1": "patient-data-protection.md",
+    "top3": [
+     "patient-data-protection.md",
+     "patient-data-protection.md",
+     "incident-response.md"
+    ],
+    "found": true,
+    "cited": [
+     "patient-data-protection.md"
+    ],
+    "answer": "Any suspected data breach must be reported to the Data Protection Officer immediately and at the latest within 24 hours."
+   },
+   {
+    "q": "A patient wants a refund but the doctor already opened the case. Is that possible?",
+    "expected": [
+     "support-refunds.md"
+    ],
+    "top1": "support-refunds.md",
+    "top3": [
+     "support-refunds.md",
+     "support-refunds.md",
+     "support-prescriptions.md"
+    ],
+    "found": true,
+    "cited": [
+     "support-refunds.md"
+    ],
+    "answer": "No, a consultation can only be refunded in full if no dermatologist has opened the case yet. Refunds are only possible if the case could not be answered for medical reasons."
+   },
+   {
+    "q": "Who has to approve a refund of 200 EUR?",
+    "expected": [
+     "support-refunds.md"
+    ],
+    "top1": "support-refunds.md",
+    "top3": [
+     "support-refunds.md",
+     "support-refunds.md",
+     "expenses-and-travel.md"
+    ],
+    "found": true,
+    "cited": [
+     "support-refunds.md"
+    ],
+    "answer": "Refunds above 150 EUR need approval from the Support Lead."
+   },
+   {
+    "q": "A patient asks which dose of the cream to use. What do I answer?",
+    "expected": [
+     "support-prescriptions.md"
+    ],
+    "top1": "patient-data-protection.md",
+    "top3": [
+     "patient-data-protection.md",
+     "support-prescriptions.md",
+     "using-ai-tools.md"
+    ],
+    "found": true,
+    "cited": [
+     "support-prescriptions.md"
+    ],
+    "answer": "Support staff never give medical advice. Questions about the dosage, side effects or the choice of medication are forwarded to the treating dermatologist through the medical platform."
+   },
+   {
+    "q": "How long is a prescription valid?",
+    "expected": [
+     "support-prescriptions.md"
+    ],
+    "top1": "support-prescriptions.md",
+    "top3": [
+     "support-prescriptions.md",
+     "support-refunds.md",
+     "password-and-device-policy.md"
+    ],
+    "found": true,
+    "cited": [
+     "support-prescriptions.md"
+    ],
+    "answer": "Prescriptions are valid for 28 days. After that the patient needs a new consultation."
+   },
+   {
+    "q": "Photo upload is broken for many users. Which severity is that?",
+    "expected": [
+     "incident-response.md"
+    ],
+    "top1": "incident-response.md",
+    "top3": [
+     "incident-response.md",
+     "incident-response.md",
+     "incident-response.md"
+    ],
+    "found": true,
+    "cited": [
+     "incident-response.md"
+    ],
+    "answer": "Photo upload not working for many users is classified as SEV2. You should respond within 30 minutes."
+   },
+   {
+    "q": "When do we write a post-mortem?",
+    "expected": [
+     "incident-response.md"
+    ],
+    "top1": "incident-response.md",
+    "top3": [
+     "incident-response.md",
+     "incident-response.md",
+     "it-access-and-mfa.md"
+    ],
+    "found": true,
+    "cited": [
+     "incident-response.md"
+    ],
+    "answer": "A blameless post-mortem is written in Confluence within 5 working days for every SEV1 and SEV2."
+   },
+   {
+    "q": "Which documents does a new dermatologist need?",
+    "expected": [
+     "doctor-onboarding.md"
+    ],
+    "top1": "doctor-onboarding.md",
+    "top3": [
+     "doctor-onboarding.md",
+     "support-refunds.md",
+     "support-prescriptions.md"
+    ],
+    "found": true,
+    "cited": [
+     "doctor-onboarding.md"
+    ],
+    "answer": "A new dermatologist needs to send an application with their medical licence (Approbation), specialist certificate in dermatology, professional liability insurance, and their IBAN for payouts."
+   },
+   {
+    "q": "Can I travel first class to Hamburg?",
+    "expected": [
+     "expenses-and-travel.md"
+    ],
+    "top1": "expenses-and-travel.md",
+    "top3": [
+     "expenses-and-travel.md",
+     "doctor-onboarding.md",
+     "support-refunds.md"
+    ],
+    "found": true,
+    "cited": [
+     "expenses-and-travel.md"
+    ],
+    "answer": "Yes, first class is allowed for trips longer than 4 hours."
+   },
+   {
+    "q": "How much is the home office allowance?",
+    "expected": [
+     "expenses-and-travel.md"
+    ],
+    "top1": "expenses-and-travel.md",
+    "top3": [
+     "expenses-and-travel.md",
+     "it-access-and-mfa.md",
+     "it-access-and-mfa.md"
+    ],
+    "found": true,
+    "cited": [
+     "expenses-and-travel.md"
+    ],
+    "answer": "The home office allowance is 30 EUR per month."
+   },
+   {
+    "q": "How do I propose a new AI use case?",
+    "expected": [
+     "using-ai-tools.md"
+    ],
+    "top1": "using-ai-tools.md",
+    "top3": [
+     "using-ai-tools.md",
+     "patient-data-protection.md",
+     "patient-data-protection.md"
+    ],
+    "found": true,
+    "cited": [
+     "using-ai-tools.md"
+    ],
+    "answer": "You propose a new AI use case through a Jira ticket in the project AIENABLE. The proposal will be assessed for value, effort, data sensitivity, and risk before development starts."
+   },
+   {
+    "q": "Is AI output sent to patients directly?",
+    "expected": [
+     "using-ai-tools.md"
+    ],
+    "top1": "using-ai-tools.md",
+    "top3": [
+     "using-ai-tools.md",
+     "patient-data-protection.md",
+     "patient-data-protection.md"
+    ],
+    "found": true,
+    "cited": [
+     "using-ai-tools.md"
+    ],
+    "answer": "No, AI output is a draft. A human checks it before it is sent to patients, doctors or authorities."
+   },
+   {
+    "q": "What is the company's parental leave policy?",
+    "expected": null,
+    "top1": "password-and-device-policy.md",
+    "top3": [
+     "password-and-device-policy.md",
+     "password-and-device-policy.md",
+     "it-access-and-mfa.md"
+    ],
+    "found": false,
+    "cited": [],
+    "answer": ""
+   },
+   {
+    "q": "Who won the football match yesterday?",
+    "expected": null,
+    "top1": "incident-response.md",
+    "top3": [
+     "incident-response.md",
+     "expenses-and-travel.md",
+     "password-and-device-policy.md"
+    ],
+    "found": false,
+    "cited": [],
+    "answer": ""
+   }
+  ]
+ },
+ "documents": {
+  "documents": 12,
+  "type_accuracy": 1.0,
+  "field_accuracy": 1.0,
+  "sent_to_review": 3,
+  "rows": [
+   {
+    "file": "001_support_refund.txt",
+    "expected_type": "support_request",
+    "type": "support_request",
+    "fields_ok": {
+     "request_type": true,
+     "case_id": true,
+     "urgency": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {
+     "EMAIL": 1,
+     "PHONE": 1,
+     "NAME": 1
+    }
+   },
+   {
+    "file": "002_support_prescription.txt",
+    "expected_type": "support_request",
+    "type": "support_request",
+    "fields_ok": {
+     "request_type": true,
+     "case_id": true,
+     "urgency": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {
+     "EMAIL": 1,
+     "BIRTH_DATE": 1,
+     "NAME": 1
+    }
+   },
+   {
+    "file": "003_support_technical.txt",
+    "expected_type": "support_request",
+    "type": "support_request",
+    "fields_ok": {
+     "request_type": true,
+     "case_id": true,
+     "urgency": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {
+     "EMAIL": 1
+    }
+   },
+   {
+    "file": "004_invoice_cloud.txt",
+    "expected_type": "invoice",
+    "type": "invoice",
+    "fields_ok": {
+     "vendor": true,
+     "invoice_number": true,
+     "invoice_date": true,
+     "due_date": true,
+     "total_amount": true,
+     "currency": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {
+     "IBAN": 1
+    }
+   },
+   {
+    "file": "005_invoice_translation.txt",
+    "expected_type": "invoice",
+    "type": "invoice",
+    "fields_ok": {
+     "vendor": true,
+     "invoice_number": true,
+     "invoice_date": true,
+     "due_date": true,
+     "total_amount": true,
+     "currency": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {
+     "NAME": 1
+    }
+   },
+   {
+    "file": "006_invoice_saas.txt",
+    "expected_type": "invoice",
+    "type": "invoice",
+    "fields_ok": {
+     "vendor": true,
+     "invoice_number": true,
+     "invoice_date": true,
+     "due_date": true,
+     "total_amount": true,
+     "currency": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {}
+   },
+   {
+    "file": "007_doctor_application_complete.txt",
+    "expected_type": "doctor_application",
+    "type": "doctor_application",
+    "fields_ok": {
+     "licence_present": true,
+     "specialist_certificate_present": true,
+     "liability_insurance_present": true,
+     "missing_documents": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {
+     "IBAN": 1,
+     "NAME": 1
+    }
+   },
+   {
+    "file": "008_doctor_application_missing.txt",
+    "expected_type": "doctor_application",
+    "type": "doctor_application",
+    "fields_ok": {
+     "licence_present": true,
+     "specialist_certificate_present": true,
+     "liability_insurance_present": true,
+     "missing_documents": true
+    },
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {
+     "NAME": 1
+    }
+   },
+   {
+    "file": "009_dsr_access.txt",
+    "expected_type": "data_subject_request",
+    "type": "data_subject_request",
+    "fields_ok": {
+     "request_article": true,
+     "received_date": true,
+     "answer_deadline": true
+    },
+    "needs_review": true,
+    "reasons": [
+     "GDPR request: legal deadline, always checked by a person"
+    ],
+    "redacted": {
+     "EMAIL": 1,
+     "BIRTH_DATE": 1,
+     "NAME": 1
+    }
+   },
+   {
+    "file": "010_dsr_deletion.txt",
+    "expected_type": "data_subject_request",
+    "type": "data_subject_request",
+    "fields_ok": {
+     "request_article": true,
+     "received_date": true,
+     "answer_deadline": true
+    },
+    "needs_review": true,
+    "reasons": [
+     "GDPR request: legal deadline, always checked by a person"
+    ],
+    "redacted": {
+     "NAME": 1
+    }
+   },
+   {
+    "file": "011_dsr_correction.txt",
+    "expected_type": "data_subject_request",
+    "type": "data_subject_request",
+    "fields_ok": {
+     "request_article": true,
+     "received_date": true,
+     "answer_deadline": true
+    },
+    "needs_review": true,
+    "reasons": [
+     "GDPR request: legal deadline, always checked by a person"
+    ],
+    "redacted": {
+     "PHONE": 1,
+     "BIRTH_DATE": 1,
+     "NAME": 1
+    }
+   },
+   {
+    "file": "012_other_newsletter.txt",
+    "expected_type": "other",
+    "type": "other",
+    "fields_ok": {},
+    "needs_review": false,
+    "reasons": [],
+    "redacted": {}
+   }
+  ]
+ },
+ "triage": {
+  "tickets": 8,
+  "category_accuracy": 1.0,
+  "priority_accuracy": 1.0,
+  "sensitive_tickets_reviewed": true,
+  "rows": [
+   {
+    "key": "ITOPS-101",
+    "expected": [
+     "it_access",
+     "high"
+    ],
+    "got": [
+     "it_access",
+     "high"
+    ],
+    "needs_review": false,
+    "reply_has_sources": true
+   },
+   {
+    "key": "ITOPS-102",
+    "expected": [
+     "security_incident",
+     "critical"
+    ],
+    "got": [
+     "security_incident",
+     "critical"
+    ],
+    "needs_review": true,
+    "reply_has_sources": true
+   },
+   {
+    "key": "SUP-210",
+    "expected": [
+     "billing",
+     "normal"
+    ],
+    "got": [
+     "billing",
+     "normal"
+    ],
+    "needs_review": false,
+    "reply_has_sources": true
+   },
+   {
+    "key": "SUP-211",
+    "expected": [
+     "prescription",
+     "high"
+    ],
+    "got": [
+     "prescription",
+     "high"
+    ],
+    "needs_review": false,
+    "reply_has_sources": true
+   },
+   {
+    "key": "PLAT-330",
+    "expected": [
+     "platform_bug",
+     "high"
+    ],
+    "got": [
+     "platform_bug",
+     "high"
+    ],
+    "needs_review": false,
+    "reply_has_sources": true
+   },
+   {
+    "key": "PRIV-12",
+    "expected": [
+     "data_protection",
+     "normal"
+    ],
+    "got": [
+     "data_protection",
+     "normal"
+    ],
+    "needs_review": true,
+    "reply_has_sources": true
+   },
+   {
+    "key": "ITOPS-103",
+    "expected": [
+     "it_access",
+     "normal"
+    ],
+    "got": [
+     "it_access",
+     "normal"
+    ],
+    "needs_review": false,
+    "reply_has_sources": true
+   },
+   {
+    "key": "FIN-44",
+    "expected": [
+     "other",
+     "low"
+    ],
+    "got": [
+     "other",
+     "low"
+    ],
+    "needs_review": false,
+    "reply_has_sources": true
+   }
+  ]
+ }
+}

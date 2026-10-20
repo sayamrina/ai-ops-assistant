@@ -1,0 +1,19 @@
+# docker compose up                        → API with the provider set in .env
+# docker compose --profile local-llm up    → also starts Ollama, so no data leaves the server
+services:
+  api:
+    build: .
+    env_file: .env
+    ports: ["8000:8000"]
+    volumes: ["ops-data:/app/data"]
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:0.5.7
+    profiles: ["local-llm"]
+    volumes: ["ollama-models:/root/.ollama"]
+    ports: ["11434:11434"]
+
+volumes:
+  ops-data:
+  ollama-models:

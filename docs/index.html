@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Internal AI Ops Assistant</title>
+<meta name="description" content="Project 2026: an internal AI service for a healthcare company with knowledge search, document intake, ticket triage, GDPR pseudonymisation and human review.">
+<style>
+:root { --bg:#f6f9fa; --surface:#fff; --ink:#17212b; --muted:#566673; --line:#dbe4e9; --accent:#0a5555; --teal:#0d6e6e; --soft:#e5f2f1;
+  --sans:"Segoe UI", Roboto, Helvetica, Arial, sans-serif; --mono:ui-monospace, Menlo, monospace; }
+@media (prefers-color-scheme: dark) { :root { --bg:#10171b; --surface:#172126; --ink:#e6eef1; --muted:#9db0ba; --line:#28363d; --accent:#7fd3cc; --teal:#5fc4bc; --soft:#18302f; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 var(--sans); }
+.wrap { max-width:940px; margin:0 auto; padding:0 20px; }
+header { padding:60px 0 38px; border-bottom:1px solid var(--line); }
+.kicker { font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); }
+h1 { font-size:clamp(32px,5.5vw,50px); line-height:1.08; margin:12px 0 16px; color:var(--accent); }
+.lead { font-size:19px; max-width:740px; margin:0; }
+.author { display:flex; align-items:center; gap:12px; margin-top:22px; }
+.author img { width:52px; height:52px; border-radius:50%; object-fit:cover; border:1px solid var(--line); }
+.byline { color:var(--muted); font-size:14px; }
+a { color:var(--teal); }
+.btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:24px; }
+.btn { padding:10px 16px; border-radius:8px; font-weight:600; font-size:15px; text-decoration:none; border:1px solid var(--accent); color:var(--accent); }
+.btn.primary { background:var(--accent); color:var(--bg); }
+section { padding:42px 0; border-bottom:1px solid var(--line); }
+h2 { font-size:26px; margin:0 0 6px; color:var(--accent); }
+.sub { color:var(--muted); margin:0 0 22px; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.stat { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px; }
+.stat b { display:block; font-size:30px; color:var(--accent); line-height:1.1; }
+.stat span { color:var(--muted); font-size:14px; }
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.step { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px; }
+.step h3 { margin:0 0 6px; font-size:17px; }
+.step p { margin:0; font-size:15px; color:var(--muted); }
+table { width:100%; border-collapse:collapse; font-size:15px; background:var(--surface); border:1px solid var(--line); }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+th { background:var(--soft); font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+figure { margin:0 0 18px; }
+figure img { width:100%; border:1px solid var(--line); border-radius:10px; display:block; }
+figcaption { font-size:14px; color:var(--muted); margin-top:6px; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.note { color:var(--muted); font-size:14px; }
+code { font-family:var(--mono); font-size:14px; background:var(--soft); padding:1px 5px; border-radius:4px; }
+footer { padding:28px 0 56px; color:var(--muted); font-size:14px; }
+@media (max-width:760px) { .grid, .steps, .two { grid-template-columns:1fr; } header { padding-top:44px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">Project 2026 · Python · FastAPI · LLM · GDPR</div>
+    <h1>Internal AI Ops Assistant</h1>
+    <p class="lead">An internal AI service for a healthcare company: it answers policy questions with sources, turns incoming documents into validated data and triages tickets from Jira to Microsoft Teams. Personal data is removed before any model call, and a human reviews everything sensitive.</p>
+    <div class="author">
+      <img src="img/amrina.jpg" alt="Photo of Amrina" width="52" height="52">
+      <div><strong>Amrina</strong><div class="byline">M.Sc. Educational Technology, Saarland University · <a href="https://www.linkedin.com/in/amrina-ali-487025119/">LinkedIn</a> · <a href="https://github.com/sayamrina">GitHub</a></div></div>
+    </div>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/sayamrina/ai-ops-assistant">View code on GitHub</a>
+      <a class="btn" href="https://github.com/sayamrina/ai-ops-assistant#evaluation">Evaluation</a>
+      <a class="btn" href="https://sayamrina.github.io/">My portfolio</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Three everyday problems</h2>
+    <p class="sub">Each one runs as an API, in the web interface and through integrations.</p>
+    <div class="steps">
+      <div class="step"><h3>Knowledge search</h3><p>Answers questions about internal policies with the exact source, or says honestly that the documents do not cover it.</p></div>
+      <div class="step"><h3>Document intake</h3><p>Classifies emails, invoices, doctor applications and GDPR requests and extracts validated fields. Legal deadlines are computed in code.</p></div>
+      <div class="step"><h3>Ticket triage</h3><p>Jira webhook in, category, priority, team and a cited reply draft out, posted to Microsoft Teams. Sensitive tickets go to a person.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Measured, not assumed</h2>
+    <p class="sub">gpt-4o-mini on small, self-made labelled sets (see the README for the caveats and the first-run results).</p>
+    <div class="grid">
+      <div class="stat"><b>100%</b><span>of answerable questions answered with the correct source; 2 of 2 off-topic questions refused</span></div>
+      <div class="stat"><b>44 / 44</b><span>document fields extracted correctly across 12 documents</span></div>
+      <div class="stat"><b>8 / 8</b><span>tickets with correct category and priority; all sensitive ones sent to a human</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>In the interface</h2>
+    <figure><img src="img/ask.png" alt="Answer with its source document" loading="lazy"><figcaption>Knowledge search: a short answer with the policy section it comes from.</figcaption></figure>
+    <div class="two">
+      <figure><img src="img/doc_gdpr.png" alt="GDPR request extracted and sent to review" loading="lazy"><figcaption>A GDPR access request: fields extracted, deadline computed, personal data removed, sent to review.</figcaption></figure>
+      <figure><img src="img/triage.png" alt="Ticket triaged to IT Operations with reply draft" loading="lazy"><figcaption>A routine ticket: routed to IT Operations with a cited reply draft.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Built for a regulated environment</h2>
+    <table>
+      <thead><tr><th>Concern</th><th>What the service does</th></tr></thead>
+      <tbody>
+        <tr><td>Patient data</td><td>Pseudonymises emails, phone numbers, IBANs, insurance numbers, birth dates and names before any model call; logs never contain document text; can run on a self-hosted model (Ollama)</td></tr>
+        <tr><td>Human oversight</td><td>Review queue for low confidence, failed validation, GDPR requests and security tickets; approve, correct or reject; full audit trail</td></tr>
+        <tr><td>Access and secrets</td><td>Role-based API keys stored as hashes, HMAC-signed webhooks with deduplication, secrets only from the environment</td></tr>
+        <tr><td>Integrations</td><td>Jira, Microsoft Teams, Confluence, SharePoint (Graph), Nextcloud (WebDAV), plus an n8n low-code workflow</td></tr>
+        <tr><td>Operations</td><td>JSON logs with request IDs, Prometheus metrics, health and readiness checks, Docker, CI with lint, security rules, 23 tests and a Docker build</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:14px">Connectors are tested against mocked API responses, not against a live company tenant. Cutora Health and all data in the project are fictional.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">Project 2026 by Amrina · AI tools were used to support the coding process · <a href="https://sayamrina.github.io/">Portfolio</a></div></footer>
+</body>
+</html>

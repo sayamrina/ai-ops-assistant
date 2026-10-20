@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Internal AI Ops Assistant</title>
+<style>
+:root { --ink:#17212b; --muted:#5a6976; --line:#dbe3e9; --bg:#f4f7f9; --card:#fff; --brand:#0d6e6e; --brand-dark:#0a5555; --warn:#9a5b00; --warn-bg:#fff4e0; --ok:#1d6b3a; --ok-bg:#e6f4ea; --bad:#a02a2a; }
+* { box-sizing: border-box; }
+body { margin:0; font:15px/1.55 "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+header { background:var(--brand-dark); color:#fff; padding:14px 24px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+header h1 { font-size:18px; margin:0; }
+header small { opacity:.8; }
+header input { width:240px; padding:7px 10px; border-radius:6px; border:0; font:inherit; }
+nav { display:flex; gap:4px; padding:10px 24px 0; border-bottom:1px solid var(--line); background:#fff; overflow-x:auto; }
+nav button { border:0; background:none; padding:10px 14px; font:inherit; font-weight:600; color:var(--muted); border-bottom:3px solid transparent; cursor:pointer; white-space:nowrap; }
+nav button.active { color:var(--brand-dark); border-color:var(--brand); }
+main { max-width:980px; margin:24px auto; padding:0 16px; }
+section { display:none; } section.active { display:block; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:16px; }
+label { font-weight:600; display:block; margin:10px 0 4px; }
+textarea, input[type=text] { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:7px; font:inherit; }
+textarea { min-height:90px; resize:vertical; }
+button.primary { margin-top:12px; background:var(--brand); color:#fff; border:0; border-radius:7px; padding:9px 18px; font:inherit; font-weight:600; cursor:pointer; }
+button.primary:hover { background:var(--brand-dark); }
+button.small { padding:5px 12px; margin:6px 6px 0 0; border-radius:6px; border:1px solid var(--line); background:#fff; cursor:pointer; font:inherit; }
+.answer { font-size:16px; }
+.src { font-size:13px; color:var(--muted); margin-top:10px; }
+.src li { margin:2px 0; }
+.pill { display:inline-block; padding:2px 9px; border-radius:99px; font-size:12px; font-weight:700; margin-right:6px; }
+.pill.ok { background:var(--ok-bg); color:var(--ok); } .pill.warn { background:var(--warn-bg); color:var(--warn); }
+.pill.neutral { background:#e8eef3; color:var(--muted); }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+td, th { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+pre { background:#0f1b24; color:#d7e6ef; padding:12px; border-radius:8px; overflow:auto; font-size:12.5px; }
+.hint { color:var(--muted); font-size:13px; }
+.error { color:var(--bad); font-weight:600; }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Internal AI Ops Assistant</h1><small>Cutora Health (fictional) · knowledge search, document intake, ticket triage, human review</small></div>
+  <input id="key" type="password" placeholder="API key" aria-label="API key" autocomplete="off">
+</header>
+<nav>
+  <button class="active" data-tab="ask">Ask the handbook</button>
+  <button data-tab="docs">Document intake</button>
+  <button data-tab="triage">Ticket triage</button>
+  <button data-tab="review">Review queue</button>
+  <button data-tab="audit">Audit log</button>
+</nav>
+<main>
+  <section id="ask" class="active">
+    <div class="card">
+      <label for="q">Question about an internal policy</label>
+      <input id="q" type="text" value="I lost my phone. How do I get access to my accounts again?">
+      <button class="primary" onclick="ask()">Ask</button>
+      <p class="hint">Answers come only from internal documents and always show their sources. Personal data in the question is removed before it reaches the model.</p>
+    </div>
+    <div id="askOut"></div>
+  </section>
+
+  <section id="docs">
+    <div class="card">
+      <label for="file">Upload a document (.txt or .pdf)</label>
+      <input id="file" type="file" accept=".txt,.pdf">
+      <button class="primary" onclick="upload()">Process</button>
+      <p class="hint">The document is pseudonymised, classified and extracted into validated fields. Uncertain results and all GDPR requests go to the review queue.</p>
+    </div>
+    <div id="docOut"></div>
+  </section>
+
+  <section id="triage">
+    <div class="card">
+      <label for="tkey">Ticket key</label><input id="tkey" type="text" value="ITOPS-204">
+      <label for="tsum">Summary</label><input id="tsum" type="text" value="Need access to Confluence space MEDOPS">
+      <label for="tdesc">Description</label><textarea id="tdesc">I joined Medical Operations last week and need read access to the MEDOPS space.</textarea>
+      <button class="primary" onclick="triage()">Triage</button>
+    </div>
+    <div id="triageOut"></div>
+  </section>
+
+  <section id="review"><div id="reviewOut"></div></section>
+  <section id="audit"><div id="auditOut"></div></section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+try { $("key").value = sessionStorage.getItem("opsKey") || ""; } catch (e) {}
+$("key").addEventListener("change", () => { try { sessionStorage.setItem("opsKey", $("key").value); } catch (e) {} });
+
+document.querySelectorAll("nav button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll("nav button, section").forEach((el) => el.classList.remove("active"));
+  b.classList.add("active"); $(b.dataset.tab).classList.add("active");
+  if (b.dataset.tab === "review") loadReview();
+  if (b.dataset.tab === "audit") loadAudit();
+}));
+
+async function api(path, options = {}) {
+  options.headers = Object.assign({"X-API-Key": $("key").value}, options.headers || {});
+  const r = await fetch(path, options);
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.detail ? JSON.stringify(data.detail) : `HTTP ${r.status}`);
+  return data;
+}
+const fail = (box, e) => { $(box).innerHTML = `<div class="card error">${esc(e.message)}</div>`; };
+const sources = (list) => list.length ? `<ul class="src">${list.map((s) => `<li>${esc(s.title)} → ${esc(s.section)} <span class="hint">(${esc(s.source)}, owner: ${esc(s.owner)})</span></li>`).join("")}</ul>` : "";
+const redacted = (r) => Object.keys(r || {}).length ? `<p class="hint">Removed before the model call: ${Object.entries(r).map(([k, v]) => `${v}× ${k}`).join(", ")}</p>` : "";
+const reviewPill = (x) => x.needs_review ? `<span class="pill warn">Human review: ${esc(x.review_reasons.join("; "))}</span>` : `<span class="pill ok">Automated</span>`;
+
+async function ask() {
+  $("askOut").innerHTML = '<div class="card hint">Searching…</div>';
+  try {
+    const r = await api("/api/ask", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({question: $("q").value})});
+    $("askOut").innerHTML = `<div class="card">${r.found ? `<div class="answer">${esc(r.answer)}</div>${sources(r.sources)}` : '<span class="pill neutral">Not in the documents</span> The handbook does not answer this. Please ask the document owner.'}${redacted(r.redacted_fields)}</div>`;
+  } catch (e) { fail("askOut", e); }
+}
+
+async function upload() {
+  const f = $("file").files[0];
+  if (!f) return;
+  const form = new FormData(); form.append("file", f);
+  $("docOut").innerHTML = '<div class="card hint">Processing…</div>';
+  try {
+    const r = await api("/api/documents", {method: "POST", body: form});
+    const rows = Object.entries(r.fields).map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(Array.isArray(v) ? v.join(", ") || "–" : v)}</td></tr>`).join("");
+    $("docOut").innerHTML = `<div class="card"><p><span class="pill neutral">${esc(r.doc_type)}</span>${reviewPill(r)} confidence ${r.confidence}</p><table>${rows}</table>${redacted(r.redacted_fields)}</div>`;
+  } catch (e) { fail("docOut", e); }
+}
+
+async function triage() {
+  $("triageOut").innerHTML = '<div class="card hint">Triaging…</div>';
+  try {
+    const body = {key: $("tkey").value, summary: $("tsum").value, description: $("tdesc").value, notify: true};
+    const r = await api("/api/triage", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+    $("triageOut").innerHTML = `<div class="card"><p><span class="pill neutral">${esc(r.category)} → ${esc(r.team)}</span><span class="pill neutral">priority: ${esc(r.priority)}</span>${reviewPill(r)}</p><p class="hint">${esc(r.rationale)}</p>${r.reply_draft ? `<label>Suggested reply (draft)</label><div class="answer">${esc(r.reply_draft)}</div>${sources(r.sources)}` : ""}</div>`;
+  } catch (e) { fail("triageOut", e); }
+}
+
+async function loadReview() {
+  try {
+    const items = await api("/api/review");
+    $("reviewOut").innerHTML = items.length ? items.map((it) => `<div class="card"><p><strong>#${it.id} ${esc(it.kind)}: ${esc(it.reference)}</strong></p><p><span class="pill warn">${esc(it.reason)}</span></p><pre>${esc(JSON.stringify(it.ai_result.fields || {category: it.ai_result.category, priority: it.ai_result.priority}, null, 2))}</pre><button class="small" onclick="decide(${it.id}, true)">Approve</button><button class="small" onclick="decide(${it.id}, false)">Reject</button></div>`).join("") : '<div class="card hint">Nothing to review.</div>';
+  } catch (e) { fail("reviewOut", e); }
+}
+async function decide(id, approve) {
+  try { await api(`/api/review/${id}`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({approve})}); loadReview(); }
+  catch (e) { fail("reviewOut", e); }
+}
+async function loadAudit() {
+  try {
+    const rows = await api("/api/review/audit?limit=30");
+    $("auditOut").innerHTML = `<div class="card"><table><tr><th>Time (UTC)</th><th>Who</th><th>Action</th><th>Reference</th></tr>${rows.map((r) => `<tr><td>${esc(r.ts)}</td><td>${esc(r.actor)}</td><td>${esc(r.action)}</td><td>${esc(r.reference || "–")}</td></tr>`).join("")}</table></div>`;
+  } catch (e) { fail("auditOut", e); }
+}
+</script>
+</body>
+</html>

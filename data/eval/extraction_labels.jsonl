@@ -1,0 +1,12 @@
+{"file": "001_support_refund.txt", "doc_type": "support_request", "fields": {"request_type": "refund", "case_id": "CT-20931", "urgency": "normal"}}
+{"file": "002_support_prescription.txt", "doc_type": "support_request", "fields": {"request_type": "prescription", "case_id": "CT-21877", "urgency": "high"}}
+{"file": "003_support_technical.txt", "doc_type": "support_request", "fields": {"request_type": "technical", "case_id": "CT-22014", "urgency": "normal"}}
+{"file": "004_invoice_cloud.txt", "doc_type": "invoice", "fields": {"vendor": "NimbusHost GmbH", "invoice_number": "NH-2026-10-0482", "invoice_date": "2026-10-01", "due_date": "2026-10-31", "total_amount": 2454.26, "currency": "EUR"}}
+{"file": "005_invoice_translation.txt", "doc_type": "invoice", "fields": {"vendor": "LinguaPro Übersetzungen", "invoice_number": "7731", "invoice_date": "2026-09-14", "due_date": "2026-09-28", "total_amount": 576.0, "currency": "EUR"}}
+{"file": "006_invoice_saas.txt", "doc_type": "invoice", "fields": {"vendor": "TicketFlow Inc.", "invoice_number": "INV-55821", "invoice_date": "2026-10-03", "due_date": "2026-10-03", "total_amount": 625.0, "currency": "USD"}}
+{"file": "007_doctor_application_complete.txt", "doc_type": "doctor_application", "fields": {"licence_present": true, "specialist_certificate_present": true, "liability_insurance_present": true, "missing_documents": []}}
+{"file": "008_doctor_application_missing.txt", "doc_type": "doctor_application", "fields": {"licence_present": true, "specialist_certificate_present": false, "liability_insurance_present": true, "missing_documents": ["specialist_certificate"]}}
+{"file": "009_dsr_access.txt", "doc_type": "data_subject_request", "fields": {"request_article": "15", "received_date": "2026-10-14", "answer_deadline": "2026-11-14"}}
+{"file": "010_dsr_deletion.txt", "doc_type": "data_subject_request", "fields": {"request_article": "17", "received_date": "2026-10-02", "answer_deadline": "2026-11-02"}}
+{"file": "011_dsr_correction.txt", "doc_type": "data_subject_request", "fields": {"request_article": "16", "received_date": "2026-09-29", "answer_deadline": "2026-10-29"}}
+{"file": "012_other_newsletter.txt", "doc_type": "other", "fields": {}}

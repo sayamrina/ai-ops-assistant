@@ -1,0 +1,8 @@
+{"key": "ITOPS-101", "summary": "New phone - need MFA reset", "description": "I switched to a new phone this weekend and the authenticator app is empty. How do I get access again?", "category": "it_access", "priority": "high"}
+{"key": "ITOPS-102", "summary": "Laptop stolen on the train", "description": "My company laptop was stolen an hour ago on the ICE to Munich. It had the support tool open.", "category": "security_incident", "priority": "critical"}
+{"key": "SUP-210", "summary": "Refund request", "description": "A patient wants a refund for a consultation, the dermatologist has not opened the case yet. Amount 39 EUR.", "category": "billing", "priority": "normal"}
+{"key": "SUP-211", "summary": "Pharmacy rejects e-prescription", "description": "Patient says the pharmacy cannot read the e-prescription code and needs the medication today.", "category": "prescription", "priority": "high"}
+{"key": "PLAT-330", "summary": "Photo upload fails for many users", "description": "Since 10:00 several patients report 'Upload failed' on the third photo, both iOS and Android.", "category": "platform_bug", "priority": "high"}
+{"key": "PRIV-12", "summary": "Patient asks for all stored data", "description": "We received an email asking for a copy of all personal data under Art. 15 GDPR.", "category": "data_protection", "priority": "normal"}
+{"key": "ITOPS-103", "summary": "Need access to Confluence space MEDOPS", "description": "I joined Medical Operations and need read access to the MEDOPS space.", "category": "it_access", "priority": "normal"}
+{"key": "FIN-44", "summary": "Question about home office allowance", "description": "How much is the monthly home office allowance and how is it paid?", "category": "other", "priority": "low"}

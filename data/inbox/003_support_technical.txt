@@ -1,0 +1,5 @@
+From: anna.berger@web.example
+Subject: Photo upload not working
+
+Hi, the app shows "Upload failed" every time I try to add the third photo for case CT-22014. I tried Wi-Fi and mobile data. Not urgent, I can wait until tomorrow.
+Anna

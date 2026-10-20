@@ -1,0 +1,67 @@
+{
+  "name": "Jira → AI triage → Teams (low-code variant)",
+  "nodes": [
+    {
+      "parameters": {"httpMethod": "POST", "path": "jira-issue-created", "options": {}},
+      "name": "Jira webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.OPS_API_URL }}/api/triage",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "X-API-Key", "value": "={{ $env.OPS_API_KEY }}"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ key: $json.body.issue.key, summary: $json.body.issue.fields.summary, description: $json.body.issue.fields.description || '', notify: false }) }}"
+      },
+      "name": "AI triage",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {"boolean": [{"value1": "={{ $json.needs_review }}", "value2": true}]}
+      },
+      "name": "Needs a human?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.TEAMS_REVIEW_WEBHOOK }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: `Review needed for ${$json.ticket}: ${$json.review_reasons.join(', ')}` }) }}"
+      },
+      "name": "Notify reviewers (Teams)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [720, -100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.TEAMS_TEAM_WEBHOOK }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: `${$json.ticket} → ${$json.team} (${$json.priority})\\n${$json.reply_draft}` }) }}"
+      },
+      "name": "Route to team (Teams)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [720, 100]
+    }
+  ],
+  "connections": {
+    "Jira webhook": {"main": [[{"node": "AI triage", "type": "main", "index": 0}]]},
+    "AI triage": {"main": [[{"node": "Needs a human?", "type": "main", "index": 0}]]},
+    "Needs a human?": {"main": [[{"node": "Notify reviewers (Teams)", "type": "main", "index": 0}], [{"node": "Route to team (Teams)", "type": "main", "index": 0}]]}
+  }
+}

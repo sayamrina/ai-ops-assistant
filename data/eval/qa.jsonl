@@ -1,0 +1,20 @@
+{"q": "I lost my phone, how do I get access to my accounts again?", "source": "it-access-and-mfa.md"}
+{"q": "Can I get MFA codes by SMS?", "source": "it-access-and-mfa.md"}
+{"q": "How long must a password be?", "source": "password-and-device-policy.md"}
+{"q": "My laptop was stolen. What do I have to do?", "source": "password-and-device-policy.md"}
+{"q": "May I paste a patient's message into an AI tool?", "source": ["patient-data-protection.md", "using-ai-tools.md"]}
+{"q": "What is the deadline to answer a request for deletion of data?", "source": "patient-data-protection.md"}
+{"q": "How fast must a suspected data breach be reported?", "source": "patient-data-protection.md"}
+{"q": "A patient wants a refund but the doctor already opened the case. Is that possible?", "source": "support-refunds.md"}
+{"q": "Who has to approve a refund of 200 EUR?", "source": "support-refunds.md"}
+{"q": "A patient asks which dose of the cream to use. What do I answer?", "source": "support-prescriptions.md"}
+{"q": "How long is a prescription valid?", "source": "support-prescriptions.md"}
+{"q": "Photo upload is broken for many users. Which severity is that?", "source": "incident-response.md"}
+{"q": "When do we write a post-mortem?", "source": "incident-response.md"}
+{"q": "Which documents does a new dermatologist need?", "source": "doctor-onboarding.md"}
+{"q": "Can I travel first class to Hamburg?", "source": "expenses-and-travel.md"}
+{"q": "How much is the home office allowance?", "source": "expenses-and-travel.md"}
+{"q": "How do I propose a new AI use case?", "source": "using-ai-tools.md"}
+{"q": "Is AI output sent to patients directly?", "source": "using-ai-tools.md"}
+{"q": "What is the company's parental leave policy?", "source": null}
+{"q": "Who won the football match yesterday?", "source": null}
