@@ -1,4 +1,4 @@
-# Using AI Tools at Cutora
+# Using AI Tools at YourDoctor
 
 Owner: AI Enablement · Last review: 2026-10-01
 

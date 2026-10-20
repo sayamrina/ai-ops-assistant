@@ -8,7 +8,7 @@
   "retrieval_hit_at_3": 1.0,
   "answered_with_correct_source": 1.0,
   "correct_refusals": 1.0,
-  "seconds_per_question": 1.4,
+  "seconds_per_question": 1.38,
   "rows": [
    {
     "q": "I lost my phone, how do I get access to my accounts again?",
@@ -25,7 +25,7 @@
     "cited": [
      "it-access-and-mfa.md"
     ],
-    "answer": "If you lose your phone, open an ITOPS ticket with priority 'High' and the type 'MFA reset'. IT will verify your identity by video call before resetting MFA. Never share MFA codes with anyone, including IT staff."
+    "answer": "To regain access to your accounts after losing your phone, open an ITOPS ticket with priority 'High' and the type 'MFA reset'. IT will verify your identity by video call before resetting MFA."
    },
    {
     "q": "Can I get MFA codes by SMS?",
@@ -59,7 +59,7 @@
     "cited": [
      "password-and-device-policy.md"
     ],
-    "answer": "Passwords must have at least 14 characters."
+    "answer": "A password must have at least 14 characters."
    },
    {
     "q": "My laptop was stolen. What do I have to do?",
@@ -95,7 +95,7 @@
      "patient-data-protection.md",
      "using-ai-tools.md"
     ],
-    "answer": "No, you should not paste patient data into an AI tool unless the tool pseudonymises it automatically."
+    "answer": "No, you should never paste patient data into an AI tool unless the tool pseudonymises it automatically."
    },
    {
     "q": "What is the deadline to answer a request for deletion of data?",
@@ -140,13 +140,13 @@
     "top3": [
      "support-refunds.md",
      "support-refunds.md",
-     "support-prescriptions.md"
+     "patient-data-protection.md"
     ],
     "found": true,
     "cited": [
      "support-refunds.md"
     ],
-    "answer": "No, a consultation can only be refunded in full if no dermatologist has opened the case yet. Refunds are only possible if the case could not be answered for medical reasons."
+    "answer": "No, a consultation cannot be refunded in full if a dermatologist has opened the case. Refunds are only possible if the case could not be answered for medical reasons."
    },
    {
     "q": "Who has to approve a refund of 200 EUR?",
@@ -173,8 +173,8 @@
     "top1": "patient-data-protection.md",
     "top3": [
      "patient-data-protection.md",
-     "support-prescriptions.md",
-     "using-ai-tools.md"
+     "using-ai-tools.md",
+     "support-prescriptions.md"
     ],
     "found": true,
     "cited": [
@@ -191,7 +191,7 @@
     "top3": [
      "support-prescriptions.md",
      "support-refunds.md",
-     "password-and-device-policy.md"
+     "patient-data-protection.md"
     ],
     "found": true,
     "cited": [
@@ -299,7 +299,7 @@
     "cited": [
      "using-ai-tools.md"
     ],
-    "answer": "You propose a new AI use case through a Jira ticket in the project AIENABLE. The proposal will be assessed for value, effort, data sensitivity, and risk before development starts."
+    "answer": "To propose a new AI use case, create a Jira ticket in the project AIENABLE. The proposal will be assessed for value, effort, data sensitivity, and risk before development starts."
    },
    {
     "q": "Is AI output sent to patients directly?",

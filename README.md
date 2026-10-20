@@ -4,7 +4,7 @@
 
 **Project 2026** · [Live demo](https://ops-assistant.streamlit.app/) · [Project page](https://sayamrina.github.io/ai-ops-assistant/) · [Portfolio](https://sayamrina.github.io/)
 
-An internal AI service for a (fictional) telemedicine company, **Cutora Health**. It helps teams with three everyday operational problems and keeps a human in control wherever data or decisions are sensitive:
+An internal AI service for a (fictional) telemedicine company, **YourDoctor Health**. It helps teams with three everyday operational problems and keeps a human in control wherever data or decisions are sensitive:
 
 1. **Knowledge search**: employees ask questions about internal policies and get short answers with the exact source, or an honest "not in the documents".
 2. **Document intake**: incoming emails, invoices, doctor applications and GDPR requests are classified and turned into validated, structured data.
@@ -118,4 +118,4 @@ Tests run offline with a deterministic fake model (no API key needed): `ruff che
 
 ## Notes
 
-Cutora Health and all documents, people and numbers in this repository are fictional. This app was built by Amrina, with AI as a supporting tool for coding.
+YourDoctor Health and all documents, people and numbers in this repository are fictional. This app was built by Amrina, with AI as a supporting tool for coding.

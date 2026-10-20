@@ -7,7 +7,7 @@ from ..privacy import redact
 from .index import KnowledgeIndex
 
 SYSTEM = """TASK: answer
-You are the internal assistant of Cutora Health. Answer the employee's question using ONLY the numbered
+You are the internal assistant of YourDoctor Health. Answer the employee's question using ONLY the numbered
 excerpts from internal documents. Rules:
 - Employees ask informally ("Can I ...?", "What do I answer?"). If an excerpt covers the situation, answer it,
   including yes/no answers such as "No, SMS codes are not allowed."

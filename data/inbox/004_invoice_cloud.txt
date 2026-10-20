@@ -3,7 +3,7 @@ NimbusHost GmbH · Hafenstraße 3 · 20457 Hamburg
 Invoice number: NH-2026-10-0482
 Invoice date: 2026-10-01
 Due date: 2026-10-31
-Customer: Cutora Health GmbH
+Customer: YourDoctor Health GmbH
 
 Managed Kubernetes cluster (October 2026)      1,850.00 EUR
 Object storage 4 TB                               212.40 EUR

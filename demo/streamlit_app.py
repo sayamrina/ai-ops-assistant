@@ -141,7 +141,7 @@ mode = "gpt-4o-mini" if settings.llm_provider == "openai" else "offline rules (n
 st.markdown(f"""
 <div class="ops-header">
   <h1>Internal AI Ops Assistant</h1>
-  <p>Cutora Health (fictional) · knowledge search, document intake, ticket triage, human review ·
+  <p>YourDoctor Health (fictional) · knowledge search, document intake, ticket triage, human review ·
      <a href="https://sayamrina.github.io/ai-ops-assistant/">Project page</a> ·
      <a href="https://github.com/sayamrina/ai-ops-assistant">Code</a> ·
      by Amrina (<a href="https://sayamrina.github.io/">portfolio</a>)</p>
