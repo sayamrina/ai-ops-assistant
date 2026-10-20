@@ -1,4 +1,4 @@
-streamlit>=1.40,<2
+streamlit>=1.46,<2
 fastapi==0.115.14
 pydantic>=2.9,<3
 pydantic-settings>=2.6,<3

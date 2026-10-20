@@ -192,7 +192,7 @@ with tab_review:
                 st.rerun()
     if state.audit:
         st.markdown("**Audit log (this session)**")
-        st.dataframe(state.audit, use_container_width=True, hide_index=True)
+        st.dataframe(state.audit, width="stretch", hide_index=True)
 
 with st.sidebar:
     st.markdown("### About this demo")
