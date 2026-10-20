@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/sayamrina/ai-ops-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/sayamrina/ai-ops-assistant/actions/workflows/ci.yml)
 
-**Project 2026** · [Project page](https://sayamrina.github.io/ai-ops-assistant/) · [Portfolio](https://sayamrina.github.io/)
+**Project 2026** · [Live demo](https://ops-assistant.streamlit.app/) · [Project page](https://sayamrina.github.io/ai-ops-assistant/) · [Portfolio](https://sayamrina.github.io/)
 
 An internal AI service for a (fictional) telemedicine company, **Cutora Health**. It helps teams with three everyday operational problems and keeps a human in control wherever data or decisions are sensitive:
 
